@@ -41,7 +41,7 @@ const { JSDOM } = jsdom;
   <sup>${poem.source}</sup>
   
   <hr/>
-  <sup>I'm Pegasus! I fetch the Poetry Foundation's Poem of the Day and crosspost it to cohost. Find more details about me [here](https://cohost.org/pegasus-poetry/post/1372999-i-m-pegasus).</sup>`;
+  <sup>I'm Pegasus! I fetch the Poetry Foundation's Poem of the Day and crosspost it to cohost. Find more details about me <a href="https://cohost.org/pegasus-poetry/post/1372999-i-m-pegasus">here</a>.</sup>`;
 
   // posting
   let user = new cohost.User();
