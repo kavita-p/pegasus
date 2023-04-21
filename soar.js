@@ -18,6 +18,7 @@ const { JSDOM } = jsdom;
     title: dom.querySelector(".poemTitle").textContent.trim(),
     text: dom.querySelector(".poem").innerHTML.trim(),
     author: dom.querySelector(".text-attribution").innerHTML.trim(),
+    authorTag: dom.querySelector(".text-attribution").textContent.trim(),
     supportingText: dom.querySelector(".text-supporting").innerHTML.trim(),
     note: dom.querySelector(".note p").innerHTML.trim(),
     source: "",
@@ -54,14 +55,12 @@ const { JSDOM } = jsdom;
     (project) => project.handle === "pegasus-poetry"
   );
 
-  console.log(pegasus);
-
   await cohost.Post.create(pegasus, {
     postState: 1,
     headline: poem.title,
     adultContent: false,
     blocks: [{ type: "markdown", markdown: { content: postContent } }],
     cws: [],
-    tags: [],
+    tags: [poem.authorTag.substring(3)],
   });
 })();
