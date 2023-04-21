@@ -1,4 +1,6 @@
 const jsdom = require("jsdom");
+const cohost = require("cohost");
+const credentials = require("./credentials.json");
 const { JSDOM } = jsdom;
 
 (async () => {
@@ -40,5 +42,26 @@ const { JSDOM } = jsdom;
   <hr/>
   <sup>I'm Pegasus! I fetch the Poetry Foundation's Poem of the Day and crosspost it to cohost. Find more details about me here.</sup>`;
 
-  console.log(postContent);
+  // console.log(postContent);
+
+  // posting
+  let user = new cohost.User();
+  await user.login(credentials.email, credentials.pw);
+
+  const projects = await user.getProjects();
+
+  const [pegasus] = projects.filter(
+    (project) => project.handle === "pegasus-poetry"
+  );
+
+  console.log(pegasus);
+
+  await cohost.Post.create(pegasus, {
+    postState: 1,
+    headline: poem.title,
+    adultContent: false,
+    blocks: [{ type: "markdown", markdown: { content: postContent } }],
+    cws: [],
+    tags: [],
+  });
 })();
