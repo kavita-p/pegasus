@@ -33,7 +33,7 @@ const { JSDOM } = jsdom;
   // formatting
   let postContent = `*${poem.author}`;
 
-  if (poem.supportingText !== null && poem.supportingText !== undefined) {
+  if (poem.supportingText !== "") {
     postContent += `\n${poem.supportingText}`;
   }
   postContent += `
