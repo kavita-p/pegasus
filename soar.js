@@ -51,7 +51,7 @@ const { JSDOM } = jsdom;
   let user = new cohost.User();
   await user.login(credentials.email, credentials.pw);
 
-  const projects = await user.getProjects();
+  const projects = user.getProjects();
 
   const [pegasus] = projects.filter(
     (project) => project.handle === "pegasus-poetry"
