@@ -31,8 +31,12 @@ const { JSDOM } = jsdom;
   poem.source = poem.source.innerHTML.trim();
 
   // formatting
-  const postContent = `*${poem.author}  
-  ${poem.supportingText}  
+  let postContent = `*${poem.author}`;
+
+  if (poem.supportingText !== null && poem.supportingText !== undefined) {
+    postContent += `\n${poem.supportingText}`;
+  }
+  postContent += `
   via [the Poetry Foundation](${poem.url})*
   ${poem.text}
   
