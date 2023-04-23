@@ -31,7 +31,7 @@ const { JSDOM } = jsdom;
   poem.source = poem.source.innerHTML.trim();
 
   // formatting
-  let postContent = `*${poem.author}`;
+  let postContent = `*${poem.author}  `;
 
   if (poem.supportingText !== "") {
     postContent += `\n${poem.supportingText}`;
@@ -51,8 +51,8 @@ const { JSDOM } = jsdom;
   let user = new cohost.User();
   await user.login(credentials.email, credentials.pw);
 
-  const projects = user.getProjects();
-
+  const projects = await user.getProjects();
+  console.log(projects);
   const [pegasus] = projects.filter(
     (project) => project.handle === "pegasus-poetry"
   );
