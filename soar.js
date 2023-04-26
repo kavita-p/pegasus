@@ -52,7 +52,6 @@ const { JSDOM } = jsdom;
   await user.login(credentials.email, credentials.pw);
 
   const projects = await user.getProjects();
-  console.log(projects);
   const [pegasus] = projects.filter(
     (project) => project.handle === "pegasus-poetry"
   );
