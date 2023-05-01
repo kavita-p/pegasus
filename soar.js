@@ -34,7 +34,7 @@ const { JSDOM } = jsdom;
   let postContent = `*${poem.author}  `;
 
   if (poem.supportingText !== "") {
-    postContent += `\n${poem.supportingText}`;
+    postContent += `\n${poem.supportingText}  `;
   }
   postContent += `
   via [the Poetry Foundation](${poem.url})*
