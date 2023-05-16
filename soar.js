@@ -28,7 +28,7 @@ const { JSDOM } = jsdom;
     tag.textContent.includes("Source:")
   );
 
-  poem.source = poem.source.innerHTML.trim();
+  poem.source = poem.source.textContent.trim().replace(/(\r\n|\n|\r)/gm, "");
 
   // formatting
   let postContent = `*${poem.author}  `;
